@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Calculator</title>
+    <link rel="stylesheet" href="mystyles.css">
+</head>
+<body style="cursor: url(asd1.png), pointer;">
+    <div class="container" style="height: 150px;">
+        <img src="amrita.png" style="width: 700px;">
+        <a href="laleet.html" style="cursor: url(asd2.png), pointer;"><button class="btn" style="margin-left: 700px;" >HOME</button></a>
+    </div>
+    <div class="container3" style="height:400px;background-image: url(tax.png);">
+        <h1>GST Calculator</h1>
+        <div class="products">
+            <label for="product"style="color:#000;margin-left:40px;text-align:left;">Select a Product:</label>
+            <select id="product" style="width: 200px;">
+                <option value="milk">Milk (0% GST)</option>
+                <option value="eggs">Eggs (0% GST)</option>
+                <option value="education_services">Education Services (0% GST)</option>
+                <option value="curd">Curd (0% GST)</option>
+                <option value="lassi">Lassi (0% GST)</option>
+                <option value="drawing_books">Children's Drawing & Colouring Books (0% GST)</option>
+                <option value="foodgrains">Unpacked Foodgrains (0% GST)</option>
+                <option value="unbranded_atta">Unbranded Atta (0% GST)</option>
+                <option value="unpacked_paneer">Unpacked Paneer (0% GST)</option>
+                <option value="unbranded_maida">Unbranded Maida (0% GST)</option>
+                <option value="gur">Gur (0% GST)</option>
+                <option value="natural_honey">Unbranded Natural Honey (0% GST)</option>
+                <option value="fresh_vegetables">Fresh Vegetables (0% GST)</option>
+                <option value="palmyra_jaggery">Palmyra Jaggery (0% GST)</option>
+                <option value="salt">Salt (0% GST)</option>
+                <option value="phool_bhari_jhadoo">Phool Bhari Jhadoo (0% GST)</option>
+                <option value="sugar">Sugar (5% GST)</option>
+                <option value="tea">Tea (5% GST)</option>
+                <option value="edible_oils">Edible Oils (5% GST)</option>
+                <option value="domestic_lpg">Domestic LPG (5% GST)</option>
+                <option value="roasted_coffee_beans">Roasted Coffee Beans (5% GST)</option>
+                <option value="pds_kerosene">PDS Kerosene (5% GST)</option>
+                <option value="skimmed_milk_powder">Skimmed Milk Powder (5% GST)</option>
+                <option value="cashew_nuts">Cashew Nuts (5% GST)</option>
+                <option value="footwear">Footwear (5% GST)</option>
+                <option value="milk_food_babies">Milk Food for Babies (5% GST)</option>
+                <option value="apparels">Apparels(5% GST)</option>
+                <option value="fabric">Fabric (5% GST)</option>
+                <option value="coir_mats">Coir Mats, Matting & Floor Covering (5% GST)</option>
+                <option value="spices">Spices (5% GST)</option>
+                <option value="coal">Coal (5% GST)</option>
+                <option value="mithai">Mishti/Mithai (Indian Sweets) (5% GST)</option>
+                <option value="life_saving_drugs">Life-saving drugs (5% GST)</option>
+                <option value="coffee">Coffee (except instant) (5% GST)</option>
+                <option value="butter">Butter (12% GST)</option>
+                <option value="ghee">Ghee (12% GST)</option>
+                <option value="fruit_juice">Fruit Juice (12% GST)</option>
+                <option value="preparations">Preparations of Vegetables, Fruits, Nuts or other parts of Plants including Pickle Murabba, Chutney, Jam, Jelly (12% GST)</option>
+                <option value="coconut_water">Packed Coconut Water (12% GST)</option>
+                <option value="hair_oil">Hair Oil (18% GST)</option>
+                <option value="toothpaste">Toothpaste (18% GST)</option>
+                <option value="soap">Soap (18% GST)</option>
+                <option value="pasta">Pasta (18% GST)</option>
+                <option value="corn_flakes">Corn Flakes (18% GST)</option>
+                <option value="soups">Soups (18% GST)</option>
+                <option value="small_cars">Small cars (+1% or 3% cess) (28% GST)</option>
+                <option value="high_end_motorcycles">High-end motorcycles (+15% cess) (28% GST)</option>
+                <option value="consumer_durables">Consumer durables such as AC and fridge (28% GST)</option>
+            </select>
+            <br><br>
+            <label for="price" style="color:#000000;margin-left:80px;text-align:left;">Price:</label>
+            <input type="number" id="price" step="0.01" min="0">
+            <br><br>
+            <button style="cursor: url(asd2.png), pointer;" onclick="calculateGST()">Calculate GST</button>
+        </div>
+        <div class="container3" style="height: 150px;width: 400px;">
+        <div class="result">
+           <b> <h2 style="color:#ffffff">Result:</h2></b>
+        <b><p style="color:#ffffff">GST Amount: <span id="gstAmount"></span></p></b>
+    <b> <p style="color:#ffffff">Total Price (including GST): <span id="totalPrice" style="color: rgb(255, 255, 255);"></span></p></b>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        function calculateGST() {
+    let product = document.getElementById('product').value;
+    let price = parseFloat(document.getElementById('price').value);
+    let gstRate;
+
+    switch (product) {
+        case 'milk':
+        case 'eggs':
+        case 'education_services':
+        case 'curd':
+        case 'lassi':
+        case 'drawing_books':
+        case 'foodgrains':
+        case 'unbranded_atta':
+        case 'unpacked_paneer':
+        case 'unbranded_maida':
+        case 'gur':
+        case 'natural_honey':
+        case 'fresh_vegetables':
+        case 'palmyra_jaggery':
+        case 'salt':
+        case 'phool_bhari_jhadoo':
+            gstRate = 0;
+            break;
+        case 'sugar':
+        case 'tea':
+        case 'edible_oils':
+        case 'domestic_lpg':
+        case 'roasted_coffee_beans':
+        case 'pds_kerosene':
+        case 'skimmed_milk_powder':
+        case 'cashew_nuts':
+        case 'footwear':
+        case 'milk_food_babies':
+        case 'apparels':
+        case 'fabric':
+        case 'coir_mats':
+        case 'spices':
+        case 'coal':
+        case 'mithai':
+        case 'life_saving_drugs':
+        case 'coffee':
+            gstRate = 5;
+            break;
+        case 'butter':
+        case 'ghee':
+        case 'fruit_juice':
+        case 'preparations':
+        case 'coconut_water':
+            gstRate = 12;
+            break;
+        case 'hair_oil':
+        case 'toothpaste':
+        case 'soap':
+        case 'pasta':
+        case 'corn_flakes':
+        case 'soups':
+            gstRate = 18;
+            break;
+        case 'small_cars':
+        case 'high_end_motorcycles':
+        case 'consumer_durables':
+            gstRate = 28;
+            break;
+        default:
+            gstRate = 0;
+    }
+
+    let gstAmount = (price * gstRate) / 100;
+    let totalPrice = price + gstAmount;
+
+    document.getElementById('gstAmount').textContent = gstAmount.toFixed(2);
+    document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+}
+
+    </script>
+</body>
+</html>
